@@ -13,7 +13,6 @@ class EmployeesAddForm extends Component {
   }
 
   onValueChange = (e) => {
-    
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -21,6 +20,9 @@ class EmployeesAddForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    //можно здесь проверку, но чтобы не усложнять код,
+    //проверка в верхнем файле будет, чтоб очищать импуты
+    //if (this.state.name.length < 3 || !this.state.salary) return;
     this.props.onAdd(this.state.name, this.state.salary)
     this.setState({
       name: '',

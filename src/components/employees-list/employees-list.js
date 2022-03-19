@@ -3,7 +3,7 @@ import EmployeesListItem from '../employees-list-item/employees-list-item'
 
 import './employees-list.css'
 
-const EmployeesList = ({data, onDelete}) => {
+const EmployeesList = ({data, onDelete, onToggleProps}) => {
 
   const elements = data.map(item => {
     const {id, ...itemProps} = item;
@@ -11,7 +11,8 @@ const EmployeesList = ({data, onDelete}) => {
       <EmployeesListItem 
         key={id} 
         {...itemProps}
-        onDelete={() => onDelete(id)}/>
+        onDelete={() => onDelete(id)}
+        onToggleProps={(e) => onToggleProps(id, e.currentTarget.dataset.toggle)}/>
     )
   })
 
