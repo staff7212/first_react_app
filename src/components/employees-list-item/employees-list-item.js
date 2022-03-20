@@ -2,9 +2,13 @@
 import './employees-list-item.css'
 
 const EmployeesListItem = (props) => {
+////
+  const {name, salary, onDelete, onToggleProps, increase, rise, changeSalary} = props;
 
-  const {name, salary, onDelete, onToggleProps, increase, rise} = props;
-
+  const getNumSalary = (e) => {
+    const numSalary = +e.target.value.slice(0, -1);
+    changeSalary(numSalary);
+  }
   // несколько вариантов
   // const promotion = rise ? ' like' : '';
   // const premium = increase ? ' increase' : '';
@@ -18,7 +22,7 @@ const EmployeesListItem = (props) => {
     // <li className={"list-group-item d-flex justify-content-between" + premium + promotion}>
     <li className={classNames}>
         <span className="list-group-item-label" onClick={onToggleProps} data-toggle="rise">{name}</span>
-        <input type="text" className="list-group-item-input" defaultValue={salary + '$'}/>
+        <input type="text" className="list-group-item-input" onChange={getNumSalary} defaultValue={salary + '$'}/>
         <div className='d-flex justify-content-center align-items-center'>
             <button type="button"
                 className="btn-cookie btn-sm " 
@@ -37,6 +41,5 @@ const EmployeesListItem = (props) => {
     </li>
   );
 }
-
 
 export default EmployeesListItem;
